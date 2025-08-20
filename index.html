@@ -341,8 +341,8 @@
         new THREE.SphereGeometry(50, 64, 64),
         new THREE.MeshStandardMaterial({
           color: '#64B5F6',
-          roughness: 0.5,
-          metalness: 0.5,
+          roughness: 0.9,
+          metalness: 1,
           side: THREE.BackSide,
           emissive: '#64B5F6',
           emissiveIntensity: 0.2
@@ -400,13 +400,21 @@
               if (child.material) {
                 child.material.transparent = true;
                 child.material.opacity = 0; // start invisible
+                  // start with invisible fade-in
+   
+
+    // 🔧 set material properties
+    child.material.roughness = 0.3;   // lower = shinier reflections
+    child.material.metalness = 1;   // higher = more metallic look
+
+    child.material.needsUpdate = true;
               }
             }
           });
 
           // model.rotation.y = -45.2;
-          model.position.set(0, 1, 0);
-          model.scale.set(0.01, 0.01, 0.01);
+          model.position.set(0, -0.1, 0);
+          model.scale.set(3, 3, 3);
           scene.add(model);
 
           mixer = new THREE.AnimationMixer(model);
