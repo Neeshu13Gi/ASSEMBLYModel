@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>ASSEMBLY</title>
+  <title>Sight Flow Indicator (Flanged Type)</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
@@ -41,7 +41,7 @@
       letter-spacing: 1px;
     }
 
-  /* .product-info {
+  .product-info {
     position: absolute;
     top: 60px;
     left: 20px;
@@ -54,7 +54,7 @@
     max-width: 300px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     animation: slideFadeIn 1s ease-out;
-  } */
+  }
 
   .product-info h1 {
     font-size: 24px;
@@ -262,31 +262,36 @@
 <body>
   <!-- Nav -->
   <nav>
-    <div class="logo">ASSEMBLY</div>
+    <div class="logo">Sight Flow Indicator (Flanged Type)</div>
   </nav>
   <div id="loading" style="color:white; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%)">
     Loading model...
   </div>
   <!-- Product Info Section -->
   <div class="product-info">
-    <h1>ASSEMBLY</h1>
- <!-- <ul>
-    <li>Real-time visual monitoring of liquid or solid flow</li>
+    <h1>Sight Flow Indicator (Flanged Type)</h1>
+ <ul>
+    <li>Direct Visual Indication of flow rate, direction, and medium condition
+</li>
     <li>Reliable under varying pressure, flow & temperature</li>
-    <li>Clear indication of flow direction, rate & medium</li>
-    <li>Enables inspection for dirt, scale & foreign matter</li>
-    <li>More dependable than electronic flow sensors</li>
-  </ul> -->
+    <li>Versatile Configurations: Flapper, rotary, or drip type depending on service needs
+</li>
+    <li>Wide Range of Sizes: From ½” to 16”
+</li>
+    <li>Pressure Ratings: #150 and #300 ANSI flanges available
+</li>
+   <li>Material Options: Carbon steel, stainless steel, duplex, super duplex, and special alloys</li>
+   <li>Custom Options: Steam jacketing, PTFE-lined glasses available on request</li>
+  </ul>
   </div>
 
   <!-- Category Buttons -->
-  <!-- <div class="categories">
-    <div class="category-card level">Animation_01</div>
-    <div class="category-card plug">Animation_02</div>
-    <div class="category-card ball">Animation_03</div>
-  </div> -->
+  <div class="categories">
+    <div class="category-card level">Animation</div>
+   
+  </div>
 
-  <!-- <button id="infoToggleBtn" class="info-toggle-btn">Show Product Info</button> -->
+  <button id="infoToggleBtn" class="info-toggle-btn">Show Product Info</button>
   <!-- Three.js Import Map -->
   <script type="importmap">
     {
@@ -489,11 +494,30 @@ function playAnimation(index) {
     }
 
     // Button Click Events
-    window.addEventListener('DOMContentLoaded', () => {
-      document.querySelector('.category-card.level')?.addEventListener('click', () => playAnimation(0));
-      document.querySelector('.category-card.plug')?.addEventListener('click', () => playAnimation(1));
-      document.querySelector('.category-card.ball')?.addEventListener('click', () => playAnimation(2));
-    });
+    // window.addEventListener('DOMContentLoaded', () => {
+    //   document.querySelector('.category-card.level')?.addEventListener('click', () => playAnimation(0));
+    //   document.querySelector('.category-card.plug')?.addEventListener('click', () => playAnimation(1));
+    //   document.querySelector('.category-card.ball')?.addEventListener('click', () => playAnimation(2));
+    // });
+// Select the button by class
+// Select the button by class
+const rotateBtn = document.querySelector('.category-card.level');
+
+rotateBtn.addEventListener('click', () => {
+  if (!model) return;
+
+  // Stop any previous rotation tween
+  gsap.killTweensOf(model.rotation);
+
+  // Infinite spin around Y axis
+  gsap.to(model.rotation, {
+    y: "+=" + Math.PI * 2, // keep adding 360°
+    duration: 3,           // 3 seconds per spin
+    ease: "linear",
+    repeat: -1             // infinite loop
+  });
+});
+
 
     const toggleBtn = document.getElementById('infoToggleBtn');
     const productInfo = document.querySelector('.product-info');
